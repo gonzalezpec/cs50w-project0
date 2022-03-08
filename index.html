@@ -1,12 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="title" content="ESPECTROSCOPÍA ASTRONÓMICA">
+        <meta name="keywords" content="ESPECTROSCOPÍA ASTRONÓMICA">
+        <meta name="description" content="APLICACIÓN DEL ALGORITMO LEVENBERG-MARQUARDT EN ANÁLISIS ESPECTRAL DE LAS LÍNEAS DE EMISIÓN PRODUCIDAS POR VIENTOS ESTELARES EN AGN: 
+        CASO DE ESTUDIO IC5063">
+        <meta name="author" content="Pedro González">
+        <title>ESPECTROSCOPÍA ASTRONÓMICA</title>
+        <style>
+            p::selection {
+                color: blue;
+                background-color: green;
+            }
+        </style>
+    <body>
+        <h1 class="view headline">
+            APLICACIÓN DEL ALGORITMO LEVENBERG-MARQUARDT EN ANÁLISIS ESPECTRAL DE LAS LÍNEAS DE EMISIÓN PRODUCIDAS POR VIENTOS ESTELARES EN AGN: 
+            CASO DE ESTUDIO IC5063
+        </h1>
+            <p><b>RESUMEN</b>&nbsp;
+                Esta investigación se realiza alrededor del análisis de espectros, el análisis espectral mide y analiza las propiedades de la materia en función de las interacciones del material con la energía electromagnética (García & Martínez, 1990). En química y física, este proceso se conoce como espectroscopia. La espectroscopia es de particular uso en astronomía, donde se utiliza para determinar la composición química de los objetos celestes. Los espectros en los que se enfoca el estudio son las líneas de emisión de un núcleo activo de galaxia, de la galaxia IC5063 la cual alberga un Núcleo Activo de Galaxia.
+            </p>
+            <p>
+                El resultado esperado de la investigación es la elaboración de un programa que encuentre los parámetros de ajuste de los espectros de emisión ya mencionados y determinar las asimetrías de los espectros provenientes de un Núcleo Activo de Galaxia, el modelo utilizado para encontrar las asimetrías es la gaussiana por conveniencia de la estructura de los mismos espectros, para el análisis de ajuste se manipulará el algoritmo de ajuste a datos no lineales Levenberg-Marquardt.
+            </p> 
+            <p>
+                Y a través de este análisis espectral de las asimetrías de las líneas determinar el comportamiento cinemático del gas en cuestión proveniente de la Galaxia IC 5063.
+            </p>
+
+        <h2>Tabla de contenido</h2>
+            <ul>
+                <li><a href="#section1">Agujero negro supermasivo.</a></li>
+                <li><a href="#section2">Efecto Doppler.</a></li>
+                <li><a href="#section3">Núcleo activo de galaxia.</a></li>
+                <li><a href="#section4">Galaxia Seyfert.</a></li>
+                <li><a href="#section5">Galaxia IC5063.</a></li>
+                <li><a href="#section6">Espectro de radiación electromagnética.</a></li>
+                <li><a href="#section7">Espectroscopia astronómica.</a></li>
+                <li><a href="#section8">Análisis de espectros</a></li>
+                <li><a href="#section9">Mínimos cuadrados no lineales</a></li>
+                <li><a href="#section10">Algoritmo Levenberg-Marquardt</a></li>
+                <li><a href="#section11">Modelo “campana de gauss”</a></li>
+                <li><a href="#section12">Aproximación mediante gaussianas</a></li>
+            </ul>
+        <h2 id="section1">
+            Agujero negro supermasivo
+        </h2>
+            <p>
+                un agujero negro es un objeto astronómico con una fuerza gravitatoria, que ni siquiera la luz puede escapar, (Robleto-Orus, y otros, 2019) un agujero negro supermasivo es un agujero negro con una masa del orden de millones o decenas de miles de millones de masas solares. 
+            </p>
+            <img src="black.png" alt="1" width="400" height="300">
+            <p>
+                Un agujero negro supermasivo tiene algunas propiedades interesantes que lo diferencian de otros de menor masa: 
+            </p>
+            <p>
+                La densidad media de un agujero negro supermasivo puede ser muy baja; de hecho, puede ser menor que la densidad del agua, si su masa es suficientemente grande. Incluyendo que las fuerzas de marea en la vecindad del horizonte de sucesos son sensiblemente menores.
+            </p>
+            <p>
+                Los agujeros negros de este tamaño pueden formarse solo de dos formas: por una lenta absorción (acrecimiento) de materia (a partir de un tamaño estelar), o directamente por presión externa en los primeros instantes del Big Bang. Ciertas mediciones Doppler de la materia que rodea el núcleo de galaxias vecinas a la Vía Láctea revelan un movimiento giratorio muy rápido, que solo es posible por una gran concentración de materia en el centro.
+            </p>
+            <p>
+                En galaxias activas más alejadas, se piensa que el ancho de las líneas espectrales está relacionado con la masa del agujero negro que genera la actividad del espacio.
+            </p> 
+        <h2 id="section2">
+            Efecto Doppler.
+        </h2>
+            <p>
+                Algunas de las mejores evidencias de la presencia de agujeros negros es la que proporciona el efecto Doppler. De acuerdo con este efecto, la luz emitida por la materia, objetos que se alejan de nosotros presenta corrimiento al rojo, mientras que los objetos que se acercan presentarán corrimiento al azul. La gravitación de los agujeros negros supermasivos en el centro de muchas galaxias se cree que alimenta objetos activos tales como galaxias Seyfert y cuásares.
+            </p>
+        <h2 id="section3">
+            Núcleo activo de galaxia.
+        </h2> 
+            <p>
+                Una galaxia se dice activa cuando una fracción significativa de la radiación electromagnética no es debida a las componentes normales de una galaxia (Martínez, Del Olmo, Coziol, & Perea, 2008).El termino de núcleo activo de galaxia (por sus siglas en inglés, AGN) es utilizado para denominar este tipo de objeto ya que la energía emitida por las galaxias activas se debe aparentemente a una región compacta en su centro.
+            </p>
+            <p>
+                En algunos casos esta región central emite chorros de partículas que se extienden por grandes distancias, provocando emisión desde regiones extendidas.  La emisión de las galaxias está normalmente dominada por la luminosidad de la componente estelar, la radiación emitida por el polvo interestelar y el gas. La emisión de los núcleos activos de galaxia se explica mediante la existencia de un agujero negro supermasivo en el centro de dichas galaxias, que convierte la energía gravitatoria en energía electromagnética.
+            </p>
+            <p>
+                Los AGN se detectan mediante diferentes métodos, lo que conlleva con una clasificación de distintos tipos, pero, todos los AGN parecen tener el mismo origen y se intenta construir una teoría que describa sus propiedades y características.
+            </p>
+            <h3>
+                Rasgos observacionales de los AGN
+            </h3>
+                <p>
+                    Morfológicamente el aspecto de la mayoría de los AGN es el de una galaxia normal, los espectros de los AGN son claramente reconocibles y distinguibles de los de galaxias normales, los espectros son en realidad la suma del espectro de la población estelar, el gas el polvo y un AGN. 
+                </p>
+                <p>
+                    Los AGN son normalmente potentes emisores de rayos x, rayos γ, el IR medio y en ondas de radio
+                </p>
+                <p>
+                    En resumen, se deben conocer las características básicas de los AGN en las distintas zonas del espectro EM y las características principales del material que emite: 
+                </p>
+                <ol>
+                    <li>
+                        Emisión muy energético (rayos γ).
+                    </li>
+                    <li>
+                        Espectro rayos-X (continuo y líneas).
+                    </li>
+                    <li>
+                        UV-bump.
+                    </li>
+                    <li>
+                        Líneas de emisión: NLR, BLR.
+                    </li>
+                    <li>
+                        Espectro continuo de ley de potencias.
+                    </li>
+                    <li>
+                        Emisión MIR/FIR.
+                    </li>
+                    <li>
+                        Emisión radio.
+                    </li>
+                    <li>
+                        Variabilidad. 
+                    </li>
+                    <li>
+                        Polarización.
+                    </li>
+                    <li>
+                        Velocidades del material.
+                    </li>
+                    <li>
+                        Composición de material que emite y 
+                    </li>
+                    <li>
+                        propiedades físicas (temperatura, excitación).
+                    </li>                 
+                </ol>
+            <h3>
+                Clasificación de los AGN
+            </h3>
+                <p>
+                    Existen muchos tipos de AGN, divididos según sus características observacionales en distintos rangos del espectro EM. Los tipos se refieren a esas características, por lo que a veces un AGN se clasifica de diferentes formas.
+                </p>
+                <p>
+                    Una de las clasificaciones más usadas es la llevada a cabo por Seyfert en 1943. Su clasificación establece un tipo llamada Sy 1, caracterizado por la presencia de NLs y BLs muy brillantes, con un continuo sin demasiadas líneas de absorción, casi completamente dominado por un objeto central (no por las estrellas de la galaxia anfitriona). Las Sy 2 no tienen líneas anchas o son muy débiles, estando el espectro dominado por líneas estrechas de ~500 km/s y el continuo es más débil, con mayor contribución de la emisión estelar. Hay tipos intermedios entre las Sy 1 y Sy 2, como una Sy 1.5.
+                </p>
+                <p>
+                    Las galaxias Sy 1 y Sy 1.5 son potentes emisores de rayos-X, y muestran bastante variabilidad (en escalas de horas o días). La emisión rayos-X de las Sy 2 es mucho más débil y un análisis espectral en este rango indica que una gran parte de la emisión rayos-X ha sido absorbida por material con densidades de columna de 10^(26-28) m^(-2) (10^(22-24) cm^(-2))
+                </p>
+                <p>
+                    Las galaxias Sy no son muy comunes (10-20% del total de galaxias), y se suelen encontrar en galaxias espirales (típicamente en Sb o SBb). Además, muchas Sy muestran   compañeras y/o signos de interacción.
+                </p>
+                <p>
+                    Otros tipos de AGN son los cuásares, LINERs, blazars o las radio-galaxias. 
+                </p>
+        <h2 id=section4>
+            Galaxia Seyfert 
+        </h2>
+            <p>
+                Este tipo de galaxia albergan núcleos activos, es decir, que el núcleo está produciendo líneas espectrales de emisión de gas ionizado (Travascio , y otros, 2021). Una característica presente es que la emisión es producida por la acreción de materia en el agujero negro supermasivo en el centro de la galaxia en cuestión.
+            </p>
+            <img src="outflow.png" alt="1" width="300" height="200">
+            <h3>
+                Características de las galaxias Seyfert
+            </h3>
+                <p>
+                    El astrónomo estadounidense Carl K. Seyfert las descubre en 1943 y en su honor son clasificadas como galaxias Seyfert, cuyas características las describen como.
+                </p>
+                <ul>
+                    <li>
+                        Son galaxias espirales.
+                    </li>
+                    <li>
+                        Existen casos donde la región central es muy brillante eclipsando al resto de la galaxia.
+                    </li>
+                    <li>
+                        El espectro electromagnético de las galaxias Seyfert presenta líneas de emisión de hidrógeno, helio, nitrógeno y oxígeno que destacan por su brillo.
+                    </li>
+                    <li>
+                        Se presentan dos tipos de líneas en el espectro visible.
+                    </li>
+                    <li>
+                        Unas líneas relativamente estrechas que se presentan en transiciones típicamente prohibidas que se denominan líneas prohibidas. 
+                    </li>
+                    <li>
+                        Otras líneas que se presentan en transiciones permitidas, que pueden ser anchas o estrechas, y se suelen denominar líneas permitidas.
+                    </li>
+                </ul>
+        <h2 id=section5>
+            Galaxia IC5063 
+        </h2>
+            <p>
+                La galaxia IC5063 alberga un Núcleo Activo de Galaxia con emisión de línea estrecha, espacialmente extendida asociada con potentes flujos de radio de escala KPc en el óptico. (Giuseppina , y otros, 2021) La galaxia del sur IC5063 se clasifica como Seyfert 2, de acuerdo con los esquemas unificados para AGN, este significa que las regiones de línea ancha están ocultas a nuestra vista directa por el toro nuclear pero que se puede ver directamente, IC5063 es una galaxia de tipo temprano- no es muy común entre las galaxias Seyfert- que muestra un complicado sistema de líneas de polvo
+            </p>
+            <img src="ic5063.png" alt="1" width="400" height="300">
+        <h2 id=section6>
+            Espectro de radiación electromagnética
+        </h2>
+            <p>
+               Frecuencia de la luz emitida por átomos o compuestos químicos, una línea espectral es una línea oscura o brillante en un espectro uniforme y continuo resultado de un exceso o una carencia de fotones en un estrecho rango de frecuencias, comparado con las frecuencias cercana, cuando existe un exceso de fotones se habla de un alinea de emisión, en el caso contrario, en vez de un exceso está presente una carencia se habla de una línea de absorción. 
+            </p>
+            <h3>
+                Espectro Óptico 
+            </h3>
+                <p>
+                    El espectro óptico es la información más importante que se obtiene de la observación, esta nos dice la composición química, su cinemática y los procesos que ocurren dentro de un gas.
+                </p><img src="espectro.png" alt="1" width="400" height="300">
+                <h4>
+                    Líneas Anchas de Emisión
+                </h4>
+                    <p>
+                        Las características esenciales es que estas líneas describen a las nubes como objetos que se encuentran cerca del núcleo y por ende tienen velocidades de 104 km/s produciendo un ensanchamiento en sus líneas debido al efecto Doppler relativista. 
+                    </p>
+                <h4>
+                    Líneas Angostas de Emisión 
+                </h4>
+                    <p>
+                        En este caso las nubes se encuentran más alejadas de la fuente por ende sus velocidades son considerablemente más bajas, por ende, presentan poco ensanchamiento en sus líneas debido al efecto Doppler relativista.
+                    </p>
+        <h2 id=section7>
+            Espectroscopia astronómica.
+        </h2>
+            <p>
+                La espectroscopia es el estudio de la interacción entre la radiación electromagnética y la materia, con absorción o emisión de energía radiante. El objeto de estudio de la espectroscopia astronómica es el espectro de radiación electromagnética, incluida la luz visible, que radia desde estrellas y otros objetos celestes. La espectroscopia se puede usar para averiguar muchas propiedades de estrellas y galaxias distantes, tales como su composición química y movimiento, mediante el efecto Doppler.
+            </p>
+            <img src="ajustes.png" alt="1" width="300" height="200">
+            <p>
+                El espectro de las galaxias se parece al producido por estrellas, ya que consiste en la luz de millones de estrellas combinadas es decir la mayoría de los espectros comparten dos características: emisión en todas las longitudes de onda del espectro óptico y varias líneas de absorción discretas super puestas.  
+            </p>
+
+        <h2 id=section8>
+            Análisis de espectros
+        </h2>
+            <p>
+                Todos los fenómenos emisores de ondas electromagnéticas (oem) imprimen sus propias características que les son propias en las emisiones de energía (García & Martínez, 1990).  Esto posibilita su identificación, en muchos casos, lo que brinda la chance de conocer algo más sobre las condiciones físicas y químicas del medio emisor. La importante rama de la Astronomía dedicada a este estudio es la Astrofísica, y ha tenido, en estos últimos años, un gran avance, impulsada por el desarrollo tecnológico espectacular que nos toca vivir. En la astronomía óptica se hace uso intensivo de la espectroscopía.
+            </p>
+            <p>
+                Para explicarlo mejor el análisis de espectros es un examen de un rango de frecuencias o cantidades relacionadas, como la energía. La representación obtenida mediante el análisis espectral se denomina espectrograma, se basa en detectar la absorción o emisión de radiación electromagnética a ciertas longitudes de onda, en relación con los niveles de energía implicados en una transmisión cuántica. 
+            </p>
+        <h2 id=section9>
+            Mínimos cuadrados no lineales. 
+        </h2>
+            <p>
+                Supóngase una muestra de n observaciones de la respuesta y los regresores, el método de mínimos cuadrados en la regresión lineal implica minimizar la función de mínimos cuadrados, al diferenciar con respecto a los parámetros e igualar a cero las derivadas el resultado de las ecuaciones normales son ecuaciones lineales y p9or ende son fáciles de resolver. 
+            </p>
+            <p>
+                Avanzamos al caso del modelo de regresión no lineal 
+            </p>
+            <p>
+                y_i=f(x_i,θ)+ε_i
+            </p>
+            <p>
+                La función de mínimos cuadrados es 
+            </p>
+            <p>
+                S(θ)=∑_(i=1)^n[y_i-f(x_i,θ)]^2 
+            </p>
+            <p>
+                A continuación se debe diferenciar la ecuación con respecto a cada elemento de θ para determinar los estimados por mínimos cuadrados. Con ello se obtiene un conjunto de p ecuaciones normales
+            </p>
+            <p>
+                S(θ)=∑_(i=1)^n[y_i-f(x_i,θ)]  [(∂x_i,θ)/(∂θ_j )]_(θ=θ ^ )=0
+            </p>
+            <p>
+                En un modelo de regresión no lineal las derivadas entre corchetes grandes serán funciones de los parámetros desconocidos.
+            </p>
+            <p>
+                Es un algoritmo para minimizar la suma de los cuadrados de los residuos entre los datos y las ecuaciones no lineales, el concepto clave detrás de esta teoría es que utiliza una expansión en serie de Taylor para expresar la ecuación no lineal original en una forma lineal aproximada, entonces es posible aplicar la teoría de los mínimos cuadrados para obtener nuevas estimaciones de parámetros que se mueven en dirección que minimice el residuo.
+            </p>
+            <p>
+                Para demostrar cómo se logra esto primero se expresa de manera general la relación entre la ecuación no lineal y los datos de la manera siguiente:
+            </p>
+            <p>
+                y_i=f(x_i,β_0,β_1,…,β_n )+ε_i
+            </p>
+        <h2 id=section10>
+            Algoritmo Levenberg-Marquardt
+        </h2>
+            <p>
+                (Montgomery , Peck , & Vining, 2006) explica que en matemáticas, ciencias de computación y análisis de datos, el algoritmo Levenberg-Marquardt mejor conocido como el método de los mínimos de cuadrados amortiguados, es utilizado para datos no lineales. 
+            </p>
+            <p>
+                Generalmente el algoritmo se utiliza en muchas aplicaciones de software para ajuste de curvas, no obstante, como ocurre con los algoritmos de ajuste de curvas el Levenberg-Marquardt solo encuentra un mínimo local. El algoritmo en cuestión interpola entre el algoritmo de Gauss-Newton y el método de descenso de gradiente. 
+            </p>
+            <p>
+                En 1944 Kenneth Levenberg publica por primera vez el algoritmo mientras laboraba en el arsenal del ejército de Frankfort. En 1973 el estadístico Donald Marquardt redescubrió el algoritmo de Levenberg quien trabajaba en Dupont e independiente mente por Girard Wynne y Morrison.      
+            </p>
+            <p>
+                El uso principal del algoritmo Levenberg-Marquardt radica en el problema de ajuste de curvas de mínimos cuadrados como ya se explicó en un punto anterior, a un conjunto de m pares de datos empíricos (x_i,y_i) de variables independientes y dependientes, encuentre los parámetros β de la curva del modelo f(x,β) de modo que la suma de los cuadrados de las desviaciones S(β) se minimice.  
+            </p>
+            <p>
+                Para solucionar el argumento anterior, así como se describe que la solución de otros algoritmos de ajuste, el algoritmo Levenberg-Marquardt es un proceso iterativo, comenzado la minimización hay que proporcionar una estimación inicial del vector β de parámetros.  En los casos con múltiples mínimos, el algoritmo converge al mínimo global solo si la estimación inicial ya es algo cercana a la solución final. 
+            </p>
+            <p>
+                Cada paso de estimación de parámetros β se remplaza con una nueva β+δ. Para determinar δ, la función f(x_i,β+δ) se aproxima por su linealización.
+            </p>
+            <p>
+                f(x_i,β+δ)≈f(x_i,β)+J_i δ,
+            </p>
+            <p>
+                Donde
+            </p>
+            <p>
+                J_i=  ∂f(x_i,β)/∂β
+            </p>
+            <p>
+                Es el gradiente de f con respecto a β.
+            </p>
+            <p>
+                La suma S(β) de desviaciones cuadrados tiene su mínimo en un gradiente de cero con respecto a β. La anterior aproximación de primer orden de f(x_i,β+δ)   da 
+            </p>
+            <p>
+                S(β+δ)≈∑_(i=1)^m〖[y_i-f(x_i,β)-J_i δ]〗
+            </p>
+            <p>
+                En notación vectorial.
+            </p>
+
+            <ol>
+                <li>
+                    S(β+δ)= ‖y-f(β)-Jδ‖^2
+                </li>
+                <li>
+                    =[y-f(β)-Jδ]^T [y-f(β)-Jδ]
+                </li>
+                <li>
+                    =[y-f(β)]^T [y-f(β)]-[y-f(β)]^T Jδ-(Jδ)^T [y-f(β)]+δ^T J^T Jδ
+                </li>
+                <li>
+                    =[y-f(β)]^T [y-f(β)]-2[y-f(β)]^T Jδ+δ^T J^T Jδs
+                </li>
+            </ol>
+            <p>
+                En caso de tomar la derivada parcial (∂S(β+δ))/∂δ  y establecer el resultado obtenido a cero es 
+            </p>
+            <p>
+                (J^T J)δ=J^T [y-f(β)]
+            </p>
+            <p>
+                J es la matriz jacobiana. La contribución de Levenberg es remplazar esta ecuación por una versión amortiguada 
+            </p>
+            <p>
+                (J^T J+λI)δ=J^T [y-f(β)]
+            </p>
+            <p>
+                Donde I es la matriz identidad, dando como incremento δ al vector de parámetros estimado β. El factor de amortiguamiento λ se ajusta en cada iteración.
+            </p>
+            <p>
+                Si la reducción de S es rápida, se puede usar un valor más pequeño, acercando el 
+                algoritmo al algoritmo de Gauss-Newton mientras que si una iteración produce una reducción insuficiente del residual λ puede aumentarse, dando un paso más cerca al descenso del gradiente, teniendo en cuenta que el gradiente de S con respecto β es igual a –2(J^T [y-f(β)])^T. Por lo tanto, para valores más grandes el paso se tomará aproximadamente en la dirección del gradiente.
+            </p>
+            <p>
+                La desventaja de este algoritmo radica en que el valor del factor de amortiguamiento λ es grande, se invierte J^T J+λI no se utiliza en lo absoluto. Un científico llamado R. Fletcher en su artículo de 1971 "Una subrutina de Marquardt modificada para mínimos cuadrados no lineales" reemplazó la matriz de identidad I con la matriz diagonal que consiste en los elementos diagonales de J^T J lo que hace que la escala de la solución se invariante
+            </p>
+            <p>
+                (J^T J+λdiag(J^T J))δ=J^T [y-f(β)]
+            </p>
+        <h2 id=section11>
+            Modelo “campana de gauss”
+        </h2>
+            <p>
+                Con mucha frecuencia el resultado final de un análisis estadístico es la estimación de los parámetros de un modelo postulado. Modelo es la denominación que le dan a las funciones que actúan como estimadores Un modelo estadístico no es determinista sino, más bien, debe implicar algunos aspectos probabilistas (Montgomery , Peck , & Vining, 2006). 
+            </p>
+            <p>
+                “Por lo general, una forma de modelo es la fundamentación de las suposiciones que hace el analista. Quizás el científico desee extraer algún nivel de distinción entre las poblaciones con nitrógeno y sin nitrógeno a través de información de la muestra. El análisis puede requerir cierto modelo para los datos; por ejemplo, que las dos muestras provengan de distribuciones normales o gaussianas, A veces el modelo postulado adquiere una forma algo más compleja. Por ejemplo, considere un fabricante de textiles que diseña un experimento donde los especímenes de tela se producen de manera que contengan diferentes porcentajes de algodón.”
+            </p>
+            <p>
+                Lo que tratan de transmitir es que la gaussiana en estadística es la distribución de probabilidades más utilizada y más importante en todo el campo estadístico la cual describe aproximadamente muchos fenómenos que ocurren en la naturaleza.
+            </p>
+            <p>
+                La gaussiana se es representada por la expresión
+            </p>
+            <p>
+                f(x) = ae^(-(x-b)^2/(2c^2 ))
+            </p>
+            <p>
+                Donde a,b,c son contantes. Con  c>-1 , a es el punto más alto de la cresta de la función. B es la posición del centro de la campana. C controla el ancho de la campana.
+            </p>
+        <h2 id="section12">
+            Aproximación mediante gaussianas.
+        </h2>
+            <p>
+                Si se requiere aproximar una secuencia de datos {Y_n:n=1,…,N} asociada a una secuencia de puntos uniformemente espaciados {x_n:n=1,…,N} mediante una suma de n_g  gaussianas, la aproximación de la secuencia y_n tiene la expresión indicada a la derecha en la ecuación (1), en este proceso de aproximación se trata de minimizar el error expresado mediante la función que se muestra a la izquierda en la ecuación (1)
+            </p>
+            <p>
+                E(y_n-y ̃_n)^2=1/N ∑_(n=1)^N(y_n-y ̃_n )^2 y ̃_n=  ∑_(i=1)^(n_g)A_ie^((-(x_n-μ_i)^2)/(2σ_i^2))
+            </p>
+            <p>
+                El caso bajo consideración es del tipo de mínimos cuadrados no lineales pues es la suma de gaussianas están involucrados parámetros que están en relación no lineal 
+            </p>
+            <p>
+                (μ y σ).
+            </p>
+
+        <a href="spaxel.html">
+            Ejemplos de cubos de datos
+        </a>    
+    </body>
 </html>
