@@ -1,3 +1,9 @@
+.heredero {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
 @media (min-width: 500px) {
   body {
     background-color: #f8f4f4;
@@ -65,9 +71,10 @@ p::selection {
   height: 200px;
 }
 
-nav p {
+ul li {
   display: block;
   padding: 6px 12px;
   text-decoration: overline;
+  color: rgba(214, 15, 15, 0.712);
 }
 /*# sourceMappingURL=estilos.css.map */
