@@ -8,9 +8,25 @@
         background-color: blue;
     }
 }
-
+H1 {  
+    font-family :Arial, Helvetica, sans-serif 
+    text-decoration underline; text-align : center
+     
+    background-color  Teal}
+H2 {text-decoration: underline; text-align:center}
+ TD { 
+    font-size : 10pt; 
+    font-family : verdana,arial text-align  center; 
+    background-color : 666666}
+BODY { color:black;background-color: #cccccc; text-indent:1cm
+     
+    font-family arial; 
+    }  
+P {font-Family:arial,verdana; color: rgb(0, 0, 0)} 
+p::selection {color: blue;background-color: green;}
 .spaxel{
     width: 300px;
     height: 200px;
 }
+
 
