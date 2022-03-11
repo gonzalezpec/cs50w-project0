@@ -1,26 +1,33 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: rgba(214, 15, 15, 0.712);
+
 @media (min-width: 500px) {
     body {
-        background-color: black;
+        background-color: rgb(248, 244, 244);
     }
 }
 @media (max-width: 499px) {
     body {
-        background-color: blue;
+        background-color: rgb(60, 60, 185);
     }
 }
 H1 {  
-    font-family :Arial, Helvetica, sans-serif 
-    text-decoration underline; text-align : center
+    font-family :Arial, Helvetica, sans-serif ;
+    text-decoration : underline; text-align : center;
      
-    background-color  Teal}
+    background-color : Teal;}
 H2 {text-decoration: underline; text-align:center}
+H3 {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
  TD { 
     font-size : 10pt; 
-    font-family : verdana,arial text-align  center; 
-    background-color : 666666}
-BODY { color:black;background-color: #cccccc; text-indent:1cm
+    font-family : verdana,arial ; text-align : center; 
+    background-color : 666666;}
+BODY { color:black; text-indent:1cm;
      
-    font-family arial; 
+    font-family : arial; 
     }  
 P {font-Family:arial,verdana; color: rgb(0, 0, 0)} 
 p::selection {color: blue;background-color: green;}
@@ -29,4 +36,15 @@ p::selection {color: blue;background-color: green;}
     height: 200px;
 }
 
+#spaxel_1{
+    width: 300px;
+    height: 200px;
+}
+nav{    
+    p{ 
+        display: block;
+        padding: 6px 12px;
+        text-decoration: overline;
+    }
+}
 
